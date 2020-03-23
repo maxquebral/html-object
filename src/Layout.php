@@ -6,7 +6,7 @@ namespace HtmlObject;
 use DOMDocument;
 use DOMElement;
 
-final class Layout implements CommonInterface
+final class Layout implements LayoutInterface
 {
     /**
      * @var \DOMDocument
@@ -37,16 +37,20 @@ final class Layout implements CommonInterface
 
     /**
      * Layout constructor.
+     *
+     * @param  \DOMDocument  $dom
      */
-    public function __construct()
+    public function __construct(DOMDocument $dom)
     {
-        $this->dom = new DOMDocument('1.0');
+        $this->dom = $dom;
 
         $this->htmlElement = $this->dom->createElement('html');
         $this->bodyElement = $this->dom->createElement('body');
     }
 
     /**
+     * @codeCoverageIgnore
+     *
      * @return string
      */
     public function __toString()
@@ -67,9 +71,13 @@ final class Layout implements CommonInterface
     /**
      * @inheritDoc
      */
-    public function addComponent(...$component)
+    public function addComponent(...$component): self
     {
         foreach ($component as $element) {
+            if (($element instanceof ElementInterface) === false) {
+                throw new \RuntimeException('Invalid component exception');
+            }
+
             /** @var \HtmlObject\AbstractBaseElement $element */
             $this->components[] = $element;
         }
@@ -78,11 +86,29 @@ final class Layout implements CommonInterface
     }
 
     /**
+     * Get added components to the layout.
+     *
+     * @return array
+     */
+    public function getComponents(): array
+    {
+        return $this->components;
+    }
+
+    /**
      * @return \DOMDocument
      */
     public function getDom(): \DOMDocument
     {
         return $this->dom;
+    }
+
+    /**
+     * @return \DOMElement
+     */
+    public function getHeadElement(): \DOMElement
+    {
+        return $this->headElement;
     }
 
     /**
@@ -121,8 +147,6 @@ final class Layout implements CommonInterface
 
             $this->headElement->appendChild($scriptElement);
         }
-
-        // $this->element->appendChild($this->headElement);
 
         return $this;
     }

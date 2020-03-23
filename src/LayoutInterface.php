@@ -3,12 +3,12 @@ declare(strict_types=1);
 
 namespace HtmlObject;
 
-interface CommonInterface
+interface LayoutInterface
 {
     /**
      * @param  mixed  ...$component
      *
-     * @return mixed
+     * @return self
      */
-    public function addComponent(...$component);
+    public function addComponent(...$component): self;
 }
