@@ -1,6 +1,7 @@
 <?php
+declare(strict_types=1);
 
-namespace App\Service\HtmlObject;
+namespace HtmlObject;
 
 /**
  * Class Button
@@ -65,7 +66,7 @@ class Button extends AbstractBaseElement
      *
      * @param  string  $style
      *
-     * @return \App\Service\HtmlObject\Button
+     * @return \HtmlObject\Button
      */
     public function setStyle(string $style): Button
     {
@@ -83,7 +84,7 @@ class Button extends AbstractBaseElement
      *
      * @param  string|null  $type
      *
-     * @return \App\Service\HtmlObject\Button
+     * @return \HtmlObject\Button
      */
     public function setType(?string $type = null): Button
     {

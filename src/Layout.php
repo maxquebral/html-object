@@ -1,8 +1,8 @@
 <?php
+declare(strict_types=1);
 
-namespace App\Service\HtmlObject;
+namespace HtmlObject;
 
-use App\Service\HtmlObject\Layout\Head;
 use DOMDocument;
 use DOMElement;
 
@@ -54,7 +54,7 @@ class Layout implements CommonInterface
         $this->htmlElement->appendChild($this->headElement);
 
         foreach ($this->components as $component) {
-            /** @var \App\Service\HtmlObject\AbstractBaseElement $component */
+            /** @var \HtmlObject\AbstractBaseElement $component */
             $this->bodyElement->appendChild($component->setDom($this->dom)->createElement());
         }
 
@@ -70,7 +70,7 @@ class Layout implements CommonInterface
     public function addComponent(...$component)
     {
         foreach ($component as $element) {
-            /** @var \App\Service\HtmlObject\AbstractBaseElement $element */
+            /** @var \HtmlObject\AbstractBaseElement $element */
             $this->components[] = $element;
         }
 
@@ -86,7 +86,7 @@ class Layout implements CommonInterface
     }
 
     /**
-     * @param  \App\Service\HtmlObject\Layout\Head  $head
+     * @param  \HtmlObject\Head  $head
      *
      * @return Layout
      */

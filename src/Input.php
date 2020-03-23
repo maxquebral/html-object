@@ -1,6 +1,7 @@
 <?php
+declare(strict_types=1);
 
-namespace App\Service\HtmlObject;
+namespace HtmlObject;
 
 /**
  * Class Input
@@ -39,7 +40,7 @@ final class Input extends AbstractBaseElement
      *
      * @param  string|null  $type
      *
-     * @return \App\Service\HtmlObject\Input
+     * @return \HtmlObject\Input
      */
     public function setType(?string $type = null): Input
     {

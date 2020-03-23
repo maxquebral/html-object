@@ -1,6 +1,7 @@
 <?php
+declare(strict_types=1);
 
-namespace App\Service\HtmlObject;
+namespace HtmlObject;
 
 use DOMDocument;
 use DOMElement;
@@ -34,20 +35,12 @@ abstract class AbstractBaseElement
     /**
      * @param  string  $name
      * @param  array  $arguments
+     *
+     * @return \HtmlObject\AbstractBaseElement
      */
     public function __call(string $name, array $arguments)
     {
         return $this->setAttribute($name, $arguments[0]);
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        // $this->dom->appendChild($this->element);
-        //
-        // return $this->dom->saveHTML();
     }
 
     /**
@@ -100,7 +93,7 @@ abstract class AbstractBaseElement
      * @param  string  $attrName
      * @param  string  $value
      *
-     * @return \App\Service\HtmlObject\AbstractBaseElement
+     * @return \HtmlObject\AbstractBaseElement
      */
     protected function setAttribute(string $attrName, string $value): AbstractBaseElement
     {

@@ -1,6 +1,7 @@
 <?php
+declare(strict_types=1);
 
-namespace App\Service\HtmlObject\Layout;
+namespace HtmlObject;
 
 class Head
 {
@@ -17,7 +18,7 @@ class Head
     /**
      * @param  string  $href
      *
-     * @return \App\Service\HtmlObject\Layout\Head
+     * @return \HtmlObject\Head
      */
     public function addLink(string $href): Head
     {
