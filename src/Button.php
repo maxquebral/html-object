@@ -12,7 +12,7 @@ namespace HtmlObject;
  *
  * @package App\Service\HtmlObject
  */
-class Button extends AbstractBaseElement
+final class Button extends AbstractBaseElement
 {
     public const STYLES = [
         self::STYLE_DANGER,

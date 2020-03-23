@@ -6,7 +6,7 @@ namespace HtmlObject;
 use DOMDocument;
 use DOMElement;
 
-class Layout implements CommonInterface
+final class Layout implements CommonInterface
 {
     /**
      * @var \DOMDocument

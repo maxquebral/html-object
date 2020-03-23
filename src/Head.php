@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace HtmlObject;
 
-class Head
+final class Head
 {
     /**
      * @var string[]
